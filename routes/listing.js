@@ -11,7 +11,7 @@ const upload = multer({ storage });
 
 router.route("/")
 .get(WrapAsync(listingController.index))
-.post(isLoggedIn,upload.single('listing[image]'),validateListing,WrapAsync(listingController.createListing));
+.post(isLoggedIn,upload.array('listing[image]',1),validateListing,WrapAsync(listingController.createListing));
 
 // New route
 router.get("/new",isLoggedIn,listingController.renderNewForm);

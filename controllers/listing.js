@@ -30,8 +30,8 @@ module.exports.createListing = async(req,res,next)=>{
         limit: 1
       })
         .send() 
-    const url = req.file.path;
-    const filename = req.file.filename;
+    const url = req.files.path;
+    const filename = req.files.filename;
     console.log(url,filename);
 
     // const file = req.files['listing[gallery]'];
