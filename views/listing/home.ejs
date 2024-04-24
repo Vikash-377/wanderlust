@@ -1,0 +1,205 @@
+<% layout('layouts/boilerplate') %>
+<body>
+  <style>
+    .filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter{
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+   opacity: 0.7;
+   
+  }
+  
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter p{
+    font-size: 0.9rem;
+  }
+  .filter button{
+    border-style: none;
+    background-color: white;
+  
+  }
+  .tax-info{
+    display: none;
+  }
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.1rem;
+    padding: 1rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    margin-top: 1.7rem;
+    width: 15rem;
+  }
+  
+  .owl-carousel{
+    height: 7rem;
+  }
+  @media(max-width:1200px) {
+    .tax-toggle{
+      display:none;
+    }
+  }
+  </style>
+    <!-- <h3>All Listing</h3> -->
+  <div class="filters owl-carousel">
+  <form method="get" action="/filter/rooms">
+    <div class="filter">
+      <p><button name="rooms" value="rooms">
+        <i class="fa-solid fa-bed"></i>
+        <br>
+        Rooms
+        
+      </button></p>
+    </div>
+  </form>
+
+  <form method="get" action="/filter/iconic">
+  <div class="filter" >
+    
+      <p><button name="iconic" value="iconic">
+        <i class="fa-solid fa-mountain-city"></i>
+        <br>
+        Iconic Cities
+      </button></p>
+    </div>
+  </form>
+
+  <form method="get" action="/filter/farm">
+  <div class="filter">
+      
+     <p><button name="farms" value="farms">
+      <i class="fa-solid fa-cow"></i>
+      <br>
+      Farms
+    </button></p>
+    </div>
+  </form>
+
+  <form method="get" action="/filter/mountains">
+  <div class="filter">
+     <p><button name="mountains" value="mountains">
+      <i class="fa-solid fa-mountain"></i>
+      <br>
+      Mountains
+    </button></p>
+    </div>
+  </form>
+
+  <form method="get" action="/filter/castles">
+  <div class="filter">
+      
+      <p><button name="castles" value="castles">
+        <i class="fa-brands fa-fort-awesome"></i>
+        <br>
+        Castles
+      </button></p>
+    </div>
+  </form>
+  
+  <form method="get" action="/filter/beach">
+    <div class="filter">
+      <p><button name="beach" value="beach">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <br>
+        Beach
+      </button></p>
+    </div>
+  </form>
+    
+  <form method="get" action="/filter/camping">
+     <div class="filter">
+      <p><button name="camping" value="camping">
+        <i class="fa-solid fa-campground"></i>
+        <br>
+        Camping
+      </button></p>
+    </div>
+  </form>
+
+  <form method="get" action="/filter/arctic">
+     <div class="filter">
+      <p><button name="arctic" value="arctic">
+        <i class="fa-solid fa-snowflake"></i>
+        <br>
+        Arctic
+      </button></p>
+    </div>
+  </form>
+  
+  <form method="get" action="/filter/desert">
+    <div class="filter">
+      <p><button name="desert" value="desert">
+        <i class="fa-solid fa-igloo"></i>
+        <br>
+        Desert
+      </button></p>
+    </div> 
+  </form>
+
+  <form method="get" action="/filter/boats">
+    <div class="filter">
+      <p><button name="boats" value="boats">
+        <i class="fa-solid fa-ship"></i>
+        <br>
+        Boats
+      </button></p>
+    </div>
+  </form>
+
+    <div class="tax-toggle">
+    <div class="form-check form-switch form-check-reverse">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+    </div>
+  </div>
+  </div>
+
+    <div class="row  row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <%for(listings of alllisting){%>
+        <a class="listing-link" href="/listing/<%=listings.id%>">
+        <div class="card col listing-card">
+            <img src="<%=listings.image.url%>" class="card-img-top" alt="listing" style="height:20rem">
+            <div class="card-body">
+              <p class="card-text">
+                <b><%=listings.title%></b><br>
+                <%=listings.price.toLocaleString("en-IN")%>/night
+                <i class="tax-info"> &nbsp; +18% GST</i>
+            </p>
+            </div>
+          </div>
+        </a>
+       
+    <%}%>
+   
+</div>
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+ 
+
+  taxSwitch.addEventListener("click",function(){
+    let taxInfo = document.getElementsByClassName("tax-info");
+   for(info of taxInfo){
+
+    if(info.style.display != "inline"){
+      info.style.display = "inline";
+
+    }else{
+      info.style.display = "none";
+    }
+    
+   }
+  })
+
+
+</script>
+</body>
+

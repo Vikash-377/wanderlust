@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        
+.book{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* border: 2px solid black; */
+    color: white;
+    background-color: rgb(228, 226, 226);
+    border-radius: 1rem;
+    width: 70%;
+    height: 12rem;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+img{
+    height: 11.75rem !important;
+    border-top-left-radius: 1.3rem !important;
+    padding: 0 !important;
+    
+}
+.check{
+    display: flex;
+    align-items: center;
+}
+.check i{
+    margin-right: 0.6rem;
+}
+.check p{
+    margin-right: 0.6rem;
+}
+.details{
+    display: flex;
+}
+.details p{
+    margin-right: 0.5rem;
+}
+.title{
+    font-size: 1.2rem;
+}
+@media (max-width:576px) {
+    img{
+        height: 9.2rem !important;
+        border-top-right-radius: 1.3rem !important;
+    }
+    .book{
+    
+        height: 22rem !important;
+        align-items: normal;
+    }
+}
+
+@media (max-width:1200px) {
+    .book{
+        width: 100%;
+    }
+} 
+    </style>
+    <h3 class="row mt-3 ms-1" >My Booking List</h3>
+    <%for(booking of userBook.bookings){%>
+        <div class="book mt-3 mb-2 row ">
+        <img class="col-12 col-sm-3 col-md-3 col-lg-3" src="<%=booking.icon%>" alt=""> 
+        <div class="col-12 col-sm-9 col-md-9 col-lg-9 col">
+        <p class="title"><b><%=booking.titles%></b></p>
+        <div class="check">  
+        <p><b><i class="fa-regular fa-calendar"></i><%=booking.checkin%></b></p>
+        <p><i class="fa-solid fa-arrow-right"></i></p>
+        <p><b><i class="fa-regular fa-calendar"></i><%=booking.checkout%></b></p>
+    </div> 
+    <div class="details">
+        <p><b><%=booking.guest%> guest | </b></p>
+        <p><b>Total price: &#8377;<%=booking.price%></b></p>
+    </div>
+        <form method="post" action="/listing/<%=currUser._id%>/booking/<%=booking.id%>?_method=DELETE">
+            <button class="btn btn-dark">Cancel booking</button>
+        </form>
+    </div>
+       
+    </div>
+    <%}%>
