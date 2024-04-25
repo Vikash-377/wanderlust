@@ -84,8 +84,6 @@ body{
 
 .show-img{
     height: 34vh;
-    border-top-left-radius: 1rem !important;
-    border-top-right-radius: 1rem !important;
     /* margin-right: 2rem; */
 }
 .btns{
