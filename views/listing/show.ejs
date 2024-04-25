@@ -94,19 +94,24 @@
 .form-p{
     padding: 0 !important;
 }
-.card-body{
+
+.listing-card{
     border-radius: 1rem;
     background-color: rgb(240, 240, 240);
+    padding: 0 !important;
+}
+.listing-titles{
+    padding: 0 !important;
 }
 </style>
     <div class="row mt-3">
-        <div class="title col-lg-8 offset-lg-3">
+        <div class="title listing-titles col-lg-8 offset-lg-3">
     <h3><%=listings.title%></h3>
     </div>
     <div class="card col-sm-12 col-md-12 col-lg-6  offset-lg-3 show-card listing-card">  
         <img src="<%=listings.image.url%>" class="card-img-top show-img" alt="img"> 
        
-            <div class="card-body mt-3">
+            <div class="card-body ms-2">
           <p class="card-text">
             <p class = "card-text hide col-12"><b><%=listings.title%></b></p>
             <p class="card-text"><b>Owned By <%=listings.owner.username%></b></p>
