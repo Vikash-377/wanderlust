@@ -30,9 +30,9 @@ module.exports.createListing = async(req,res,next)=>{
         limit: 1
       })
         .send() 
-    const url = req.file.path;
-    const filename = req.file.filename;
-    console.log(url,filename);
+        const url = req.file.url;
+        const filename = req.file.public_id;
+    
 
     // const file = req.files['listing[gallery]'];
     // let files = file.map((el)=>{
@@ -51,7 +51,6 @@ module.exports.createListing = async(req,res,next)=>{
     newlisting.image = {url,filename};
     newlisting.geometry = response.body.features[0].geometry;
     await newlisting.save();
-    console.log(newlisting);
     
     req.flash("success","New Listing Created!");
     res.redirect("/listing");
