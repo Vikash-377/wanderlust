@@ -52,9 +52,7 @@ body{
 }
 
 .card-img-top{
-    /* border-radius: 1rem !important; */
-    border-top-left-radius: 1rem !important;
-    border-top-right-radius: 1rem !important;
+    border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
 }
@@ -86,6 +84,8 @@ body{
 
 .show-img{
     height: 34vh;
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
     /* margin-right: 2rem; */
 }
 .btns{
