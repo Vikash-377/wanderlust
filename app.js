@@ -92,11 +92,11 @@ app.use((req,res,next)=>{
 
 
 
-app.get("/bookings/:id",async(req,res)=>{
+app.get("/bookings/:id", WrapAsync(async(req,res)=>{
     let {id} = req.params;
     const userBook = await userbooking.findById(id).populate({path:"bookings",populate:{path:"author",},});
     res.render("listing/book.ejs",{userBook});
-})
+}))
 
 app.post("/listing/:id/booking",isLoggedIn,validateBooking,WrapAsync(async(req,res)=>{
     let {id} = req.params;
