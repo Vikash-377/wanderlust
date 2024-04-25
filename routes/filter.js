@@ -13,6 +13,7 @@ router.get("/beach",filterController.beach);
 router.get("/camping",filterController.camping);
 router.get("/arctic",filterController.arctic);
 router.get("/desert",filterController.desert);
+router.get("/boats",filterController.desert);
 
 
 module.exports = router;

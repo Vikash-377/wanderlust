@@ -76,3 +76,9 @@ module.exports.desert = async(req,res)=>{
     res.render("listing/home.ejs",{alllisting});
 }
 
+module.exports.boats = async(req,res)=>{
+    let {boats} = req.query;
+    const filListing = await listing.find({});
+    let alllisting = filListing.filter((filListing)=> filListing.category==boats);
+    res.render("listing/home.ejs",{alllisting});
+}
