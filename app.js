@@ -113,7 +113,9 @@ app.post("/listing/:id/booking",isLoggedIn,validateBooking,WrapAsync(async(req,r
     for(let i=user.bookings.length-1; i>=0; i--){
         for(let j=0; j<i; j++){
             if(user.bookings[j].listing == user.bookings[i].listing){
-                throw new ExpressError(400, "You already book this listing");
+                // throw new ExpressError(400, "You already book this listing");
+                req.flash("error","You already book this listing");
+                return res.redirect(`/bookings/${id}`);
             }
         }
     }

@@ -5,8 +5,17 @@ module.exports.createReview = async(req,res)=>{
     let listings = await listing.findById(req.params.id);
     let newreviews = new review(req.body.reviews);
     newreviews.author = req.user._id;
-    console.log(newreviews);
+    // console.log(newreviews);
     listings.reviews.push(newreviews);
+    
+    for(let i=listings.reviews.length-1; i>=0; i--){
+        for(let j=0; j<i; j++){
+            if(listings.reviews[i].username == listings.reviews[j].username){
+                req.flash("error","You already reviewed this listing");
+               return res.redirect(`/listing/${listings._id}`);
+            }
+        }
+    }
     await newreviews.save(); 
     await listings.save(); 
     req.flash("success","New Review Created");
