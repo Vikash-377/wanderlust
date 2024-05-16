@@ -8,7 +8,7 @@ const listing = require('./models/listing');
         country: joi.string().required(),
         price: joi.number().required().min(0),
         image: joi.string().allow("",null),
-        category:joi.string().required(),
+        category:joi.string().allow(),
         
     }).required(),
  });
